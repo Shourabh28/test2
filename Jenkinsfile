@@ -32,5 +32,24 @@ pipeline {
                   }
             }
         }
+        stage ('prepare') {
+            steps {
+                  script {
+                      //loadProperties()
+                      //def properties = 
+                      properties = readProperties(file: 'test.properties')
+                      echo "===========${properties}"
+                      echo "Later one ${properties.name}"
+                  }
+            }
+        }
+
+        stage ('Checking variables') {
+            steps {
+                  script {
+                      echo "Later one ${properties.place}"
+                  }
+            }
+        }
     }
  }
